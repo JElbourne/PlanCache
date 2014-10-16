@@ -48,6 +48,6 @@ class SheetsController < ApplicationController
     end
 
     def sheet_params
-      params.require(:sheet).permit(:description, :string)
+      params.require(:sheet).permit(:description, :image)
     end
 end

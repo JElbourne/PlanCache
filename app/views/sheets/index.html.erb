@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>String</th>
       <th colspan="3"></th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @sheets.each do |sheet| %>
       <tr>
+        <td><%= image_tag sheet.image.url(:thumb) %></td>
         <td><%= sheet.description %></td>
         <td><%= sheet.user.email if sheet.user %></td>
         <td><%= link_to 'Show', sheet %></td>
