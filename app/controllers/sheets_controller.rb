@@ -1,5 +1,7 @@
 class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   respond_to :html
 
   def index
@@ -12,7 +14,7 @@ class SheetsController < ApplicationController
   end
 
   def new
-    @sheet = Sheet.new
+    @sheet = current_user.sheets.build
     respond_with(@sheet)
   end
 
@@ -20,7 +22,7 @@ class SheetsController < ApplicationController
   end
 
   def create
-    @sheet = Sheet.new(sheet_params)
+    @sheet = current_user.sheets.build(sheet_params)
     @sheet.save
     respond_with(@sheet)
   end
@@ -38,6 +40,11 @@ class SheetsController < ApplicationController
   private
     def set_sheet
       @sheet = Sheet.find(params[:id])
+    end
+
+    def correct_user
+      @sheet = current_user.sheets.find_by(params[:id])
+      redirect_to sheets_path, notice: "Not authorized to edit this sheet." if @pin.nil?
     end
 
     def sheet_params

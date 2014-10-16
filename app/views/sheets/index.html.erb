@@ -13,9 +13,12 @@
     <% @sheets.each do |sheet| %>
       <tr>
         <td><%= sheet.description %></td>
+        <td><%= sheet.user.email if sheet.user %></td>
         <td><%= link_to 'Show', sheet %></td>
-        <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
-        <td><%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if sheet.user == current_user %>
+          <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
+          <td><%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +26,7 @@
 
 <br>
 
-<%= link_to 'New Sheet', new_sheet_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Sheet', new_sheet_path %>
+<% end %>
+

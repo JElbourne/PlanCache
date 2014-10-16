@@ -18,7 +18,7 @@ class SheetsControllerTest < ActionController::TestCase
 
   test "should create sheet" do
     assert_difference('Sheet.count') do
-      post :create, sheet: { description: @sheet.description, string: @sheet.string }
+      post :create, sheet: { description: @sheet.description}
     end
 
     assert_redirected_to sheet_path(assigns(:sheet))
@@ -35,7 +35,7 @@ class SheetsControllerTest < ActionController::TestCase
   end
 
   test "should update sheet" do
-    patch :update, id: @sheet, sheet: { description: @sheet.description, string: @sheet.string }
+    patch :update, id: @sheet, sheet: { description: @sheet.description}
     assert_redirected_to sheet_path(assigns(:sheet))
   end
 

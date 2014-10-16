@@ -5,6 +5,7 @@
   <%= @sheet.description %>
 </p>
 
-
-<%= link_to 'Edit', edit_sheet_path(@sheet) %> |
+<% if @sheet.user == current_user %>
+    <%= link_to 'Edit', edit_sheet_path(@sheet) %> |
+<% end %>
 <%= link_to 'Back', sheets_path %>

@@ -2,8 +2,6 @@
 
 one:
   description: MyString
-  string: MyString
 
 two:
   description: MyString
-  string: MyString
