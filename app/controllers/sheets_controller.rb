@@ -1,5 +1,5 @@
 class SheetsController < ApplicationController
-  before_action :set_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :set_sheet, only: [:show]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
   respond_to :html
@@ -43,7 +43,7 @@ class SheetsController < ApplicationController
     end
 
     def correct_user
-      @sheet = current_user.sheets.find_by(params[:id])
+      @sheet = current_user.sheets.find(params[:id])
       redirect_to sheets_path, notice: "Not authorized to edit this sheet." if @sheet.nil?
     end
 
