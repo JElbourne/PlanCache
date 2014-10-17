@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-    has_many :sheets
+    has_many :sheets, dependent: :destroy
 
     validates :profile_name, presence: true
 end
