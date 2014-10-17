@@ -8,7 +8,7 @@
           <%= sheet.description %>
         </div>
         <div class="sheet-owner">
-          <strong><%= sheet.user.email if sheet.user %></strong>
+          <strong><%= sheet.user.profile_name if sheet.user %></strong>
         </div>
         <% if sheet.user == current_user %>
           <div class="actions">
