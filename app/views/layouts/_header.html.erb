@@ -23,7 +23,11 @@
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About Us", about_path %></li>
         <% if user_signed_in? %>
-            <li><%= link_to 'New Sheet', new_sheet_path %></li>
+            <li>
+              <%= link_to new_sheet_path do %>
+                <span class="glyphicon glyphicon-plus"></span> New Sheet
+              <% end %>
+            </li>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% end %>

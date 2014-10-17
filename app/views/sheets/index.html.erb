@@ -1,15 +1,26 @@
-
+<%= render 'pages/home' unless user_signed_in? %>
 <div id="sheets" class="transitions-enabled">
   <% @sheets.each do |sheet| %>
     <div class="box panel panel-default">
-      <%= image_tag sheet.image.url(:medium) %>
+      <%= link_to image_tag(sheet.image.url(:medium)), sheet_path(sheet) %>
       <div class="panel-body">
-        <%= sheet.description %>
-        <%= sheet.user.email if sheet.user %>
-        <%= link_to 'Show', sheet_path(sheet) %>
+        <div class="sheet-description">
+          <%= sheet.description %>
+        </div>
+        <div class="sheet-owner">
+          <strong><%= sheet.user.email if sheet.user %></strong>
+        </div>
         <% if sheet.user == current_user %>
-          <%= link_to 'Edit', edit_sheet_path(sheet) %>
-          <%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="actions">
+            <%= link_to edit_sheet_path(sheet) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+               Edit
+            <% end %>
+            <%= link_to sheet, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+               Delete
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>

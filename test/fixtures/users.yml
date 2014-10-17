@@ -4,12 +4,15 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {
-    email: jay@plancache.com
-}
-# column: value
-#
-two: {
-    email: cody@plancache.com
-}
-#  column: value
+jason:
+    email: "Jay@plancache.com"
+    encrypted_password: "$2a$10$2Go7rLFQ6Fy13wleKnKjhOYUH.aTfgkKJWrHHM0UOjuRElXqzoxJS"
+
+cody:
+    email: "cody@plancache.com"
+
+amy:
+    email: "amy@plancache.com"
+
+blocked_friend:
+    email: 'blocked@plancache.com'

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :sheets
 
   devise_for :users
-  root 'pages#home'
+  root 'sheets#index'
 
   get 'about' => 'pages#about'
 

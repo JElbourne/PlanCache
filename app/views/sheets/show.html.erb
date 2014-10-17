@@ -1,10 +1,27 @@
-<%= image_tag @sheet.image.url(:medium) %>
-<p>
-  <strong>Description:</strong>
-  <%= @sheet.description %>
-</p>
-
-<% if @sheet.user == current_user %>
-    <%= link_to 'Edit', edit_sheet_path(@sheet) %> |
-<% end %>
 <%= link_to 'Back', sheets_path %>
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading center">
+                <%= image_tag @sheet.image.url(:medium) %>
+            </div>
+            <div class="panel-body">
+                <div class="sheet-description">
+                    <%= @sheet.description %>
+                </div>
+                <div class="sheet-owner">
+                    <strong><%= @sheet.user.email if @sheet.user %></strong>
+                </div>
+                <% if @sheet.user == current_user %>
+                    <div class="actions">
+                      <%= link_to edit_sheet_path(@sheet) do %>
+                        <span class="glyphicon glyphicon-edit"></span>
+                         Edit
+                      <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
