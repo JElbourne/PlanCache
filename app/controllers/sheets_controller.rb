@@ -44,7 +44,7 @@ class SheetsController < ApplicationController
 
     def correct_user
       @sheet = current_user.sheets.find_by(params[:id])
-      redirect_to sheets_path, notice: "Not authorized to edit this sheet." if @pin.nil?
+      redirect_to sheets_path, notice: "Not authorized to edit this sheet." if @sheet.nil?
     end
 
     def sheet_params

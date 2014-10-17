@@ -1,34 +1,17 @@
-<h1>Listing sheets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th>String</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sheets.each do |sheet| %>
-      <tr>
-        <td><%= image_tag sheet.image.url(:thumb) %></td>
-        <td><%= sheet.description %></td>
-        <td><%= sheet.user.email if sheet.user %></td>
-        <td><%= link_to 'Show', sheet %></td>
+<div id="sheets" class="transitions-enabled">
+  <% @sheets.each do |sheet| %>
+    <div class="box panel panel-default">
+      <%= image_tag sheet.image.url(:medium) %>
+      <div class="panel-body">
+        <%= sheet.description %>
+        <%= sheet.user.email if sheet.user %>
+        <%= link_to 'Show', sheet_path(sheet) %>
         <% if sheet.user == current_user %>
-          <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
-          <td><%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Edit', edit_sheet_path(sheet) %>
+          <%= link_to 'Destroy', sheet, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if user_signed_in? %>
-  <%= link_to 'New Sheet', new_sheet_path %>
-<% end %>
-
+      </div>
+    </div>
+  <% end %>
+</div>
