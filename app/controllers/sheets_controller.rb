@@ -5,7 +5,7 @@ class SheetsController < ApplicationController
   respond_to :html
 
   def index
-    @sheets = Sheet.all
+    @sheets = Sheet.all.order("created_at DESC")
     respond_with(@sheets)
   end
 
@@ -43,7 +43,7 @@ class SheetsController < ApplicationController
     end
 
     def correct_user
-      @sheet = current_user.sheets.find(params[:id])
+      @sheet = current_user.sheets.find_by!(params[:id])
       redirect_to sheets_path, notice: "Not authorized to edit this sheet." if @sheet.nil?
     end
 
