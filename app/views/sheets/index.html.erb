@@ -1,27 +1,50 @@
 <%= render 'pages/home' unless user_signed_in? %>
 <div id="sheets" class="transitions-enabled">
   <% @sheets.each do |sheet| %>
-    <div class="box panel panel-default">
-      <%= link_to image_tag(sheet.image.url(:medium)), sheet_path(sheet) %>
-      <div class="panel-body">
+    <div class="box index-view panel panel-default">
+      <%= link_to image_tag(sheet.image.url(:medium),class: "sheet-img img-responsive" ), sheet_path(sheet)%>
+      <div class="panel-body sheet-body">
         <div class="sheet-description">
           <%= sheet.description %>
         </div>
+      </div>
+      <div class="panel-footer">
         <div class="sheet-owner">
-          <strong><%= sheet.user.profile_name if sheet.user %></strong>
+            <div class="pull-left">
+                <%= holder_tag "55x30" %>
+                <strong><%= sheet.user.profile_name if sheet.user %></strong>
+            </div>
+            <div class="pull-right">
+              <%= link_to sheet_path(sheet), class: "btn btn-primary btn-xs" do %>
+                <span class="glyphicon glyphicon-usd"></span> 0.99  Buy
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <% if sheet.user == current_user %>
-          <div class="actions">
-            <%= link_to edit_sheet_path(sheet) do %>
-              <span class="glyphicon glyphicon-edit"></span>
-               Edit
-            <% end %>
-            <%= link_to sheet, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="glyphicon glyphicon-trash"></span>
-               Delete
-            <% end %>
+
+          <div class="sheet-owner-actions">
+            <div class="pull-left">
+                <% if sheet.user == current_user %>
+                    <%= link_to edit_sheet_path(sheet) do %>
+                      <span class="glyphicon glyphicon-edit"></span> Edit
+                    <% end %>
+                    <%= link_to sheet, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <span class="glyphicon glyphicon-trash"></span> Delete
+                    <% end %>
+                <% else %>
+                    <%= link_to edit_sheet_path(sheet) do %>
+                      <span class="glyphicon glyphicon-flag"></span> Report
+                    <% end %>
+                <% end %>
+
+            </div>
+            <div class="pull-right">
+              <%= link_to sheet_path(sheet), class: "btn btn-default btn-xs" do %>
+                <span class="glyphicon glyphicon-bullhorn"></span> cri·tique
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
           </div>
-        <% end %>
       </div>
     </div>
   <% end %>

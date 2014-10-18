@@ -17,4 +17,7 @@
 //= require masonry/jquery.masonry
 //= require bootstrap
 //= require bootstrap-sprockets
+//= require underscore
+//= require gmaps/google
+//= require holder
 //= require_tree .
