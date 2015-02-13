@@ -1,1 +1,18 @@
+<% if user_signed_in? %>
+  <li><%= link_to 'Sign out', signout_path %></li>
+<% else %>
+  <li><%= link_to 'Sign in', signin_path %></li>
+<% end %>
+
+<%# Rails flash messages styled for Bootstrap 3.0 %>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+
 <h1 id="welcome_to_plancache">Welcome to PlanCache</h1>
+
