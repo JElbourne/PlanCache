@@ -37,8 +37,9 @@ config/initializers/secret_token.rb
 <<<<<<< HEAD
 #config/secrets.yml --> Calls server's ENV so its okay to include this.
 =======
-config/secrets.yml
+#config/secrets.yml
 >>>>>>> a02428e5da39c930ab575076fb5049c82412c02b
+config/application.yml
 
 ## Environment normalisation:
 /.bundle
