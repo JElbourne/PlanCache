@@ -1,9 +1,9 @@
 class EmailProcessor
-  def self.process(email)
-    new(email).process
+  def initialize(email)
+    @email = email
   end
-  
-  def process    
+
+  def process
     message = Message.new
   end
   
