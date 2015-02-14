@@ -15,15 +15,24 @@ ActiveRecord::Schema.define(version: 20150213043031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "image"
+    t.string   "location"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", using: :btree
 
 end

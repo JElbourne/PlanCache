@@ -1098,3 +1098,654 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+
+
+Started GET "/" for ::1 at 2015-02-13 15:15:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
+  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  rack-mini-profiler (0.9.2) lib/mini_profiler/profiler.rb:300:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/5f910adfb5661498/variables" for ::1 at 2015-02-13 15:15:30 -0500
+
+
+Started GET "/" for ::1 at 2015-02-13 15:15:32 -0500
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.0) lib/active_record/migration.rb:393:in `check_pending!'
+  activerecord (4.2.0) lib/active_record/migration.rb:374:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  rack-mini-profiler (0.9.2) lib/mini_profiler/profiler.rb:300:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/c0eb535724c3b0fb/variables" for ::1 at 2015-02-13 15:15:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150213043031)
+  [1m[35m (0.3ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/jasonelbourne/Development/Rails/PlanCache/db/migrate/20150213043031_create_users.rb:10)
+  [1m[36m (4.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "provider" character varying, "uid" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "users" already exists
+: CREATE TABLE "users" ("id" serial primary key, "name" character varying, "provider" character varying, "uid" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/jasonelbourne/Development/Rails/PlanCache/db/migrate/20150213043031_create_users.rb:10)
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "provider" character varying, "uid" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150213043031"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2015-02-13 15:16:45 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 87ms (Views: 78.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:16:49 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 41ms (Views: 40.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:16:50 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:16:50 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:16:50 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:16:50 -0500
+
+
+Started GET "/" for ::1 at 2015-02-13 15:16:56 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 40ms (Views: 39.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:17:12 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:17:14 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:17:14 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:17:14 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:17:14 -0500
+
+
+Started GET "/" for ::1 at 2015-02-13 15:17:19 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 42ms (Views: 41.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:17:55 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 48ms (Views: 47.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:17:57 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:17:57 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:17:57 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:17:57 -0500
+
+
+Started GET "/" for ::1 at 2015-02-13 15:17:59 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 43ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:21:00 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 49ms (Views: 48.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:21:35 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 66ms (Views: 56.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:21:37 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:21:37 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:21:37 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:21:37 -0500
+
+
+Started GET "/auth/facebook/callback?code=AQBVeV6WbHlp72HteBA4h7ZzAHElnKJi54bmCPUnrsA5y7ePycJ9Uiq0-ad2Us8PcYMZjJzufAGGW9rMbhxCz12yFjNti3B8snVpWDqQSNnklEy8lBkKMdAZKklhWd91uTCnrJu6WS-vWzmw1JA09ydpyYSWzBWWaFAA-D_hDj6_cyHdK7skxmJ9KxBFV-Z-cZIxYGGVqRCOpJZeLgYTo_CZptwoSez8RZlhULidDBYpsXgK-D40jmY-aoJRVSQ7QuCjdBSvNJoofd8kAKw5oAltde0E4D8jFKJ7uFhYTdS1x42F2iYUz6THHpROa5vUCEqf5KW8tqexOuwid8b-Ls0o&state=36ecfc57f93d4789a3c7c40072731967f0947c55caca4930" for ::1 at 2015-02-13 15:21:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQBVeV6WbHlp72HteBA4h7ZzAHElnKJi54bmCPUnrsA5y7ePycJ9Uiq0-ad2Us8PcYMZjJzufAGGW9rMbhxCz12yFjNti3B8snVpWDqQSNnklEy8lBkKMdAZKklhWd91uTCnrJu6WS-vWzmw1JA09ydpyYSWzBWWaFAA-D_hDj6_cyHdK7skxmJ9KxBFV-Z-cZIxYGGVqRCOpJZeLgYTo_CZptwoSez8RZlhULidDBYpsXgK-D40jmY-aoJRVSQ7QuCjdBSvNJoofd8kAKw5oAltde0E4D8jFKJ7uFhYTdS1x42F2iYUz6THHpROa5vUCEqf5KW8tqexOuwid8b-Ls0o", "state"=>"36ecfc57f93d4789a3c7c40072731967f0947c55caca4930", "provider"=>"facebook"}
+Completed 500 Internal Server Error in 3ms
+
+ActiveModel::ForbiddenAttributesError - ActiveModel::ForbiddenAttributesError:
+  activemodel (4.2.0) lib/active_model/forbidden_attributes_protection.rb:21:in `sanitize_for_mass_assignment'
+  activerecord (4.2.0) lib/active_record/relation/query_methods.rb:580:in `where!'
+  activerecord (4.2.0) lib/active_record/relation/query_methods.rb:574:in `where'
+  activerecord (4.2.0) lib/active_record/querying.rb:10:in `where'
+  app/models/user.rb:5:in `from_omniauth'
+  app/controllers/sessions_controller.rb:9:in `create'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  rack-mini-profiler (0.9.2) lib/mini_profiler/profiling_methods.rb:108:in `block in profile_method'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:404:in `call_app!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:362:in `callback_phase'
+  omniauth-oauth2 (1.2.0) lib/omniauth/strategies/oauth2.rb:77:in `callback_phase'
+  omniauth-facebook (2.0.0) lib/omniauth/strategies/facebook.rb:72:in `block in callback_phase'
+  omniauth-facebook (2.0.0) lib/omniauth/strategies/facebook.rb:135:in `with_authorization_code!'
+  omniauth-facebook (2.0.0) lib/omniauth/strategies/facebook.rb:71:in `callback_phase'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:227:in `callback_call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/builder.rb:59:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  rack-mini-profiler (0.9.2) lib/mini_profiler/profiler.rb:300:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/jasonelbourne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/7f77468f630978eb/variables" for ::1 at 2015-02-13 15:21:38 -0500
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users"
+
+
+Started GET "/" for ::1 at 2015-02-13 15:25:51 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 53ms (Views: 52.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:25:52 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 41ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:25:54 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:25:54 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 15:25:54 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 15:25:54 -0500
+
+
+Started GET "/auth/facebook/callback?code=AQD8wDSe40zuOJ82amiYVnn5J9W5wK9GBMwlWNNTrI5gVYFVAOCiTm_-8nlNOHPtIZ4vdelIVUsPRGLJkZVs_z42-WFmD1fccARDOrxa13TGaTmba9HdQMPhdzFD1eAl8tfpmVB3f1dZoipVbEDHI9QkHYER0CF-G422yvHevJ5h13LapE8GZQ1XC4v1tBdTaGwggLrrkgiRjPSE0daeGJow8OsQR2yR6LaDleB0b9H9IzJq-RkoZpyb0TAcpxq4ln81pmEMLY5HcXgIXcLyMLs1JZTBg-Y3TmU34Y7hXmyxZFwz4WURN3dNP6bfagDWRvxnGKC7kyptdhoIP6o2WuQy&state=eec7155538371c991b07a63d1072f14fd2932cc0aa523955" for ::1 at 2015-02-13 15:25:54 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQD8wDSe40zuOJ82amiYVnn5J9W5wK9GBMwlWNNTrI5gVYFVAOCiTm_-8nlNOHPtIZ4vdelIVUsPRGLJkZVs_z42-WFmD1fccARDOrxa13TGaTmba9HdQMPhdzFD1eAl8tfpmVB3f1dZoipVbEDHI9QkHYER0CF-G422yvHevJ5h13LapE8GZQ1XC4v1tBdTaGwggLrrkgiRjPSE0daeGJow8OsQR2yR6LaDleB0b9H9IzJq-RkoZpyb0TAcpxq4ln81pmEMLY5HcXgIXcLyMLs1JZTBg-Y3TmU34Y7hXmyxZFwz4WURN3dNP6bfagDWRvxnGKC7kyptdhoIP6o2WuQy", "state"=>"eec7155538371c991b07a63d1072f14fd2932cc0aa523955", "provider"=>"facebook"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "323384914520322"]]
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "users" ("provider", "uid", "name", "oauth_token", "oauth_expires_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["provider", "facebook"], ["uid", "323384914520322"], ["name", "Jay Elbourne"], ["oauth_token", "CAAPXR6mfbFYBAMlvZBrMKydwVnh7paKRHx3ZAk8lRJG5pJgyUaucU7mhKVyAG7pSU1T1HkSkzeBSqOLEAOy8L418DCdXkhB6ghq8NPwOWfH0Ads7cp5VYh26fBpUZBGv2NeQZBLgt2ZCiO2UZCISZCnCaEUBFRimBUoF5Qi76tLK2NCZAOF43ZAPZCyDINmgmImr598lfjy9xTIZAGZApJBwDCuX"], ["oauth_expires_at", "2015-04-14 05:22:43.000000"], ["created_at", "2015-02-13 20:25:55.213432"], ["updated_at", "2015-02-13 20:25:55.213432"]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 39ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:25:55 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered welcome/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 45ms (Views: 42.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:25:58 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered welcome/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 46ms (Views: 43.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:25:59 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered welcome/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 46ms (Views: 43.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/signout" for ::1 at 2015-02-13 15:26:01 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 15:26:01 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 42ms (Views: 41.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/jasonelbourne/Development/Rails/PlanCache/db/migrate/20150213043031_create_users.rb:19)
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::UndefinedFunction: ERROR:  function uuid_generate_v4() does not exist
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+: CREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidExtension (20150213034328)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (27.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150213034328"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/jasonelbourne/Development/Rails/PlanCache/db/migrate/20150213043031_create_users.rb:19)
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_users_on_provider_and_uuid" ON "users"  ("provider", "uuid")
+PG::UndefinedColumn: ERROR:  column "uuid" does not exist
+: CREATE  INDEX  "index_users_on_provider_and_uuid" ON "users"  ("provider", "uuid")
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to EnableUuidExtension (20150213034328)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150213034328"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /Users/jasonelbourne/Development/Rails/PlanCache/db/migrate/20150213043031_create_users.rb:19)
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_users_on_provider_and_uid" ON "users"  ("provider", "uid")
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150213043031"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2015-02-13 18:45:22 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 66ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for ::1 at 2015-02-13 18:45:25 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 18:45:25 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 18:45:25 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 18:45:25 -0500
+
+
+Started GET "/auth/facebook/callback?code=AQAUtnRw_HSG8aGM9sfQHvpd31q_NXe5KUb-a4nIYPLcM6dbndiGtpKvNVVdVln-yIVFnhinL4khU15hM3yytS59pVf4C3VyNSWKw7pXWjK5KI88fXrqlOvj6PvfVip8Rk5adeZTisUUdhWEvbZ_4TrY3hfeoD2IcjBIh0IjyH6mdjPPnylMjRX7TvuuzxggopidhnTqnnSYbHZVKEzIFOHtZxvJBRaG28uAal1GM1WYXWbJIkAYbgT4EAXEFfig4LxKKErLVsMsX3pbZtwARzexAEjKWQ-Q4GT_3isZyKQssD2oLCbJll-vZG1snHEUFkmdKiDXOW_BvmCwJygeGB5V&state=09a3c6f7c71df400281b3dd30fef003344fb29137428038c" for ::1 at 2015-02-13 18:45:25 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQAUtnRw_HSG8aGM9sfQHvpd31q_NXe5KUb-a4nIYPLcM6dbndiGtpKvNVVdVln-yIVFnhinL4khU15hM3yytS59pVf4C3VyNSWKw7pXWjK5KI88fXrqlOvj6PvfVip8Rk5adeZTisUUdhWEvbZ_4TrY3hfeoD2IcjBIh0IjyH6mdjPPnylMjRX7TvuuzxggopidhnTqnnSYbHZVKEzIFOHtZxvJBRaG28uAal1GM1WYXWbJIkAYbgT4EAXEFfig4LxKKErLVsMsX3pbZtwARzexAEjKWQ-Q4GT_3isZyKQssD2oLCbJll-vZG1snHEUFkmdKiDXOW_BvmCwJygeGB5V", "state"=>"09a3c6f7c71df400281b3dd30fef003344fb29137428038c", "provider"=>"facebook"}
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "323384914520322"]]
+  [1m[36m (1.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO "users" ("provider", "uid", "email", "name", "first_name", "last_name", "image", "oauth_token", "oauth_expires_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["provider", "facebook"], ["uid", "323384914520322"], ["email", "jayelbourne@gmail.com"], ["name", "Jay Elbourne"], ["first_name", "Jay"], ["last_name", "Elbourne"], ["image", "http://graph.facebook.com/323384914520322/picture"], ["oauth_token", "CAAPXR6mfbFYBABPDof2nmnfCPb2pVZCZCZAZAQoyDnKncSTfZAYDboxp5GZAocm5pxZAmIcyiNS5LArXnspSuJ4TI8KPCAMaFG66iNvIk2Xi6el3frSX5GdwCRFhvF83pFAChybZB86FaYLW7I3eZB7cRFrZBxbc5VvSwRJDkkZAYRZBmhbltL9mJWRrmeRv5Y8yWZBF0ejLcRwRUax803G2CW7oJ"], ["oauth_expires_at", "2015-04-14 05:22:42.000000"], ["created_at", "2015-02-13 23:45:26.133616"], ["updated_at", "2015-02-13 23:45:26.133616"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 40ms (ActiveRecord: 15.1ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:45:26 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "edae2855-0a6c-44be-834b-dc263c95e1d5"]]
+  Rendered welcome/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 39ms (Views: 37.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:45:28 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "edae2855-0a6c-44be-834b-dc263c95e1d5"]]
+  Rendered welcome/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 45ms (Views: 43.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/signout" for ::1 at 2015-02-13 18:45:30 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:45:30 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 52ms (Views: 51.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:45:31 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 53ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+
+
+Started GET "/signin" for ::1 at 2015-02-13 18:54:45 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 18:54:45 -0500
+
+
+Started GET "/signin" for ::1 at 2015-02-13 18:54:45 -0500
+Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/auth/facebook
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for ::1 at 2015-02-13 18:54:45 -0500
+
+
+Started GET "/auth/facebook/callback?code=AQDpc9I-snkKo00YlZM0Xw-XewuJRfAvozO_h038YxAhs72h4WcpT4ycBJW-ialqCkvWx_z0Luz6oFgdXdBbS2q5uWZO-QZmGfqjigePQ2NREit52BdyUjlHv5OsMZU-6d5t-9JMC9zHkwGrMrOt9BLs7T6-7uum47pFJPJ76S0mwIkNoOlI8g0ItUDJBEh-bm-YkRgOQ26Mh7zdTi82egnLLtP_jU6Ev4SIMJ1rJb907EuqxDl89qM9CqAGXKgIffYw4GElwjaM7cmxIVf5Scb1LTKVi05szARTWVFZ_AUydOuFa9UzCj40qQI_lFhkSVush4_tlh04ttIrvREh0Eer&state=2c1057701c0a7e23f56a405693bff1bca64817c2d86fc469" for ::1 at 2015-02-13 18:54:45 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"code"=>"AQDpc9I-snkKo00YlZM0Xw-XewuJRfAvozO_h038YxAhs72h4WcpT4ycBJW-ialqCkvWx_z0Luz6oFgdXdBbS2q5uWZO-QZmGfqjigePQ2NREit52BdyUjlHv5OsMZU-6d5t-9JMC9zHkwGrMrOt9BLs7T6-7uum47pFJPJ76S0mwIkNoOlI8g0ItUDJBEh-bm-YkRgOQ26Mh7zdTi82egnLLtP_jU6Ev4SIMJ1rJb907EuqxDl89qM9CqAGXKgIffYw4GElwjaM7cmxIVf5Scb1LTKVi05szARTWVFZ_AUydOuFa9UzCj40qQI_lFhkSVush4_tlh04ttIrvREh0Eer", "state"=>"2c1057701c0a7e23f56a405693bff1bca64817c2d86fc469", "provider"=>"facebook"}
+  [1m[35mUser Load (1.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "323384914520322"]]
+  [1m[36m (0.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("provider", "uid", "email", "name", "first_name", "last_name", "image", "oauth_token", "oauth_expires_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["provider", "facebook"], ["uid", "323384914520322"], ["email", "jayelbourne@gmail.com"], ["name", "Jay Elbourne"], ["first_name", "Jay"], ["last_name", "Elbourne"], ["image", "http://graph.facebook.com/323384914520322/picture"], ["oauth_token", "CAAPXR6mfbFYBAGisLSiqXBtCOWuPcBxbYO029aOpkbbaIHpITLJY769VBXjO3mV4j0zJ303vUjkpRoDwBucMdelLunvZA6L9BhgZCTyXeERK7eM10GhOgbg19FZAYoaqKzGXZB1eYqKy6RhlUWyYS3MmON4joGZBhKzQUhAsX9j3BcYoWpaZB3pkBEnKmxEQw9jPHBLwBg3fg5ZCA969TCb"], ["oauth_expires_at", "2015-04-14 05:22:42.000000"], ["created_at", "2015-02-13 23:54:46.143823"], ["updated_at", "2015-02-13 23:54:46.143823"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:54:46 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "bf1ed84a-7924-46da-812a-5c4c7a01b53d"]]
+  Rendered welcome/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 54ms (Views: 51.7ms | ActiveRecord: 2.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+
+
+Started GET "/" for ::1 at 2015-02-13 18:55:39 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", "bf1ed84a-7924-46da-812a-5c4c7a01b53d"]]
+  Rendered welcome/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 44ms (Views: 41.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:55:40 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", "bf1ed84a-7924-46da-812a-5c4c7a01b53d"]]
+  Rendered welcome/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 60ms (Views: 57.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/signout" for ::1 at 2015-02-13 18:55:44 -0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:55:44 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 37ms (Views: 36.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-02-13 18:55:46 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 41ms (Views: 40.3ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
