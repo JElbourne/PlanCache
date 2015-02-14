@@ -4,7 +4,7 @@ class EmailProcessor
   end
 
   def process
-    logger.info "IT WORKS JUST FINE, LETS MOVE ON"
+    Rails.logger.info "IT WORKS JUST FINE, LETS MOVE ON"
   end
   
 end
