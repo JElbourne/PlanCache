@@ -16,6 +16,28 @@ ActiveRecord::Schema.define(version: 20150213043031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+  enable_extension "hstore"
+
+  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "branch_id"
+    t.uuid     "tenant_id"
+    t.string   "email"
+    t.string   "subject"
+    t.hstore   "to",                       array: true
+    t.hstore   "from"
+    t.hstore   "cc",                       array: true
+    t.text     "body"
+    t.text     "raw_text"
+    t.text     "raw_html"
+    t.text     "raw_body"
+    t.text     "raw_headers"
+    t.hstore   "headers"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "messages", ["tenant_id", "branch_id"], name: "index_messages_on_tenant_id_and_branch_id", using: :btree
+  add_index "messages", ["tenant_id", "email"], name: "index_messages_on_tenant_id_and_email", using: :btree
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "provider"
