@@ -4,7 +4,7 @@ class EmailProcessor
   end
 
   def process
-    message = Message.new
+    logger.info "IT WORKS JUST FINE, LETS MOVE ON"
   end
   
 end
