@@ -11,7 +11,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem "figaro"
+gem 'figaro', '~> 1.1.0'
+gem 'aws-sdk', '~> 2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -21,10 +22,10 @@ gem "figaro"
 
 gem 'rack-mini-profiler'
 
-gem 'griddler'
-gem 'griddler-mandrill'
-gem 'omniauth-facebook'
-gem 'foundation-rails'
+gem 'griddler', '~> 1.1.0'
+gem 'griddler-mandrill', '~> 1.0.2'
+gem 'omniauth-facebook', '~> 2.0.0'
+gem 'foundation-rails', '~> 5.5.1.0'
 
 group :production do
   gem 'rails_12factor'

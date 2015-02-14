@@ -40,6 +40,8 @@ class CreateInitSchema < ActiveRecord::Migration
       t.text :raw_body
       t.text :raw_headers
       t.hstore :headers
+      
+      t.json :files_array
 
       t.timestamps null: false
     end
