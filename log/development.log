@@ -2170,3 +2170,208 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateInitSchema (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (18.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (39.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "hstore"
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_users_on_provider_and_uid" ON "users"  ("provider", "uid")
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "accounts" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE TABLE "branches" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "subject" character varying, "lower_subjects" character varying[] DEFAULT '{}', "cache_id" uuid, "user_id" uuid, "account_id" uuid, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_branches_on_lower_subjects" ON "branches" USING gin ("lower_subjects")[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_branches_on_user_id_and_account_id" ON "branches"  ("user_id", "account_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_branches_on_cache_id_and_account_id" ON "branches"  ("cache_id", "account_id")[0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "messages" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "branch_id" uuid, "user_id" uuid, "account_id" uuid, "email" character varying, "subject" character varying, "to" hstore[], "from" hstore, "cc" hstore[], "body" text, "raw_text" text, "raw_html" text, "raw_body" text, "raw_headers" text, "headers" hstore, "files_json" json, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_messages_on_account_id_and_branch_id" ON "messages"  ("account_id", "branch_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_messages_on_account_id_and_email" ON "messages"  ("account_id", "email")
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150213043031"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'accounts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'branches'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateInitSchema (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (23.6ms)[0m  CREATE EXTENSION IF NOT EXISTS "hstore"
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_users_on_provider_and_uid" ON "users"  ("provider", "uid")
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "accounts" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "user_id" uuid, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "branches" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "subject" character varying, "lower_subjects" character varying[] DEFAULT '{}', "cache_id" uuid, "user_id" uuid, "account_id" uuid, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_branches_on_lower_subjects" ON "branches" USING gin ("lower_subjects")[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_branches_on_user_id_and_account_id" ON "branches"  ("user_id", "account_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_branches_on_cache_id_and_account_id" ON "branches"  ("cache_id", "account_id")[0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE "messages" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "branch_id" uuid, "user_id" uuid, "account_id" uuid, "email" character varying, "subject" character varying, "to" hstore[], "from" hstore, "cc" hstore[], "body" text, "raw_text" text, "raw_html" text, "raw_body" text, "raw_headers" text, "headers" hstore, "files_json" json, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_messages_on_account_id_and_branch_id" ON "messages"  ("account_id", "branch_id")[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_messages_on_account_id_and_email" ON "messages"  ("account_id", "email")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150213043031"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'accounts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'branches'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateInitSchema (20150213043031)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "uuid-ossp"[0m
+  [1m[35mSQL (21.7ms)[0m  CREATE EXTENSION IF NOT EXISTS "hstore"
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "users" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "provider" character varying, "uid" character varying, "nickname" character varying, "email" character varying, "name" character varying, "first_name" character varying, "last_name" character varying, "image" character varying, "location" character varying, "oauth_token" character varying, "oauth_expires_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_users_on_provider_and_uid" ON "users"  ("provider", "uid")
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "accounts" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "user_id" uuid, "key" uuid, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX  "index_accounts_on_key" ON "accounts"  ("key")
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "branches" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "subject" character varying, "lower_subjects" character varying[] DEFAULT '{}', "cache_id" uuid, "user_id" uuid, "account_id" uuid, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_branches_on_lower_subjects" ON "branches" USING gin ("lower_subjects")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_branches_on_user_id_and_account_id" ON "branches"  ("user_id", "account_id")[0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_branches_on_cache_id_and_account_id" ON "branches"  ("cache_id", "account_id")
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "messages" ("id" uuid PRIMARY KEY  DEFAULT uuid_generate_v4(), "branch_id" uuid, "user_id" uuid, "account_id" uuid, "email" character varying, "subject" character varying, "to" hstore[], "from" hstore, "cc" hstore[], "body" text, "raw_text" text, "raw_html" text, "raw_body" text, "raw_headers" text, "headers" hstore, "files_json" json, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_messages_on_account_id_and_branch_id" ON "messages"  ("account_id", "branch_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_messages_on_account_id_and_email" ON "messages"  ("account_id", "email")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150213043031"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'accounts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'branches'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'messages'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+

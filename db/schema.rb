@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 20150213043031) do
   enable_extension "uuid-ossp"
   enable_extension "hstore"
 
+  create_table "accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
+    t.uuid     "key"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "accounts", ["key"], name: "index_accounts_on_key", using: :btree
+
   create_table "branches", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "subject"
     t.string   "lower_subjects", default: [],              array: true
@@ -67,8 +77,8 @@ ActiveRecord::Schema.define(version: 20150213043031) do
     t.string   "location"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", using: :btree

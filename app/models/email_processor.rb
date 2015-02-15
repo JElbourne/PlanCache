@@ -11,13 +11,18 @@ class EmailProcessor
       token = address[:host] == "plancache.com"|| address[:host] == "in.plancache.com" ? address[:token] : nil
     end
     
-    # Rails.logger.info token
-    # Rails.logger.info @email.attachments
+    Rails.logger.info "\n\n\n#{token}\n\n\n"
+
+    account = Account.find_by_key(token)
+    return unless account
     
-    return if token == "1234" || token.nil? #TODO replace this with a query to valid account
+    user = account.user
+
+    Rails.logger.info "\n\n\n#{user.email} - #{@email.from[:email]}\n\n\n"
+    return unless user.email == @email.from[:email]
+    # TODO determine if from_email is allowed to use this account based on a query on Account Associates (need to create this)
     
-    # TODO add a find for the User based on the account or from_email
-    branch = Branch.get_from_subject(@email.subject)
+    branch = account.branches.get_from_subject(@email.subject)
     message = branch.messages.create_from_email(@email, branch.id)
   end
   
