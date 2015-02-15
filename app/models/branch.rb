@@ -4,9 +4,7 @@ class Branch < ActiveRecord::Base
   
   def self.get_from_subject(subject)
     where("lower_subjects @> ?", "{#{subject.try(:downcase)}}").first_or_create do |b|
-      b.subject = subject
-      b.lower_subjects = [subject.try(:downcase)]
-      #TODO add the user or account reference
+      b.lower_subjects = [subject.downcase!]
     end
   end
   

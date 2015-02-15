@@ -46,8 +46,11 @@ group :development, :test do
 end
 
 group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'capybara', '~> 2.4.4'
   gem 'guard-rspec', '~> 4.5.0', require: false
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 1.4.0'
+  gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'letter_opener', '~> 1.3.0'
+  gem 'email_spec', '~> 1.6.0'
 end
