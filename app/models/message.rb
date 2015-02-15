@@ -1,8 +1,12 @@
 class Message < ActiveRecord::Base
   
-  def self.create_from_email(email)
-    files_json = email.attachments ? create_files_json(email.attachments) : nil
+  belongs_to :branch
+  belongs_to :user
+  
+  def self.create_from_email(email, branch_id)
+    files_json = email.attachments.any? ? create_files_json(email.attachments) : nil
     create do |m|
+      m.branch_id = branch_id
       m.email = email.from[:email]
       m.subject = email.subject if email.subject
       m.to = email.to if email.to
@@ -20,22 +24,43 @@ class Message < ActiveRecord::Base
     end
   end
   
-  def create_files_json(attachments)
+private
+  
+  def self.create_files_json(attachments)
+    file_hash = {}
     attachments.each do |filedata|
-      logger.info "FILEDATA  =>  #{filedata}"
-      ##public_url, key = upload_file_to_s3(fileData)
+      public_url, key = self.upload_file_to_s3(filedata)
+      file_hash[key.to_s] = {:file_name => filedata.original_filename, :file_size => filedata.size, :content_type => filedata.content_type, :key => key, :public_url => public_url}
     end
-    #TODO build the json and return
+    return file_hash.to_json
   end
 
-  def upload_file_to_s3(fileData)
-    key = make_file_key(filedata)
-    s3_file = S3_BUCKET.objects[key].write(:file => fileData.tempfile.read)
-    s3_file.acl = :public_read
-    return (s3_file.public_url.to_s, key)
+  def self.upload_file_to_s3(filedata)
+    fileString = filedata.tempfile.read
+    encryptedFileString = self.encrypt_file_data(fileString)
+    key = self.make_file_key(fileString)
+    s3_file_url = nil
+    unless Rails.env.test?
+      s3_file = S3_BUCKET.objects[key].write(:file => encryptedFileString)
+      s3_file.acl = :public_read
+      s3_file_url = s3_file.public_url.to_s
+    end
+    return [s3_file_url, key]
   end
   
-  def make_file_key(file)
-    Digest::SHA1.hexdigest(file.size+"/"+file.lastModifiedDate+"/"+file.name)
+  def self.make_file_key(fileString)
+    Digest::SHA1.hexdigest(fileString)
+  end
+  
+  def self.encrypt_file_data(fileString)
+    #TODO move the ActiveSupport::KeyGenerator.new(ENV["ENCRYPTOR_PASSCODE"]).generate_key(ENV["ENCRYPTOR_SALT"]) into the tenant so each one is specific to tenant
+    encryptor = ActiveSupport::MessageEncryptor.new(ENV["ENCRYPTOR_KEY"])
+    encryptor.encrypt_and_sign(fileString)
+  end
+  
+  def self.decrypt_file_data(encryptedFile)
+    #TODO move the ActiveSupport::KeyGenerator.new(ENV["ENCRYPTOR_PASSCODE"]).generate_key(ENV["ENCRYPTOR_SALT"]) into the tenant so each one is specific to tenant
+    encryptor = ActiveSupport::MessageEncryptor.new(ENV["ENCRYPTOR_KEY"])
+    encryptor.decrypt_and_verify(encryptedFile)
   end
 end

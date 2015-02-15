@@ -23,10 +23,25 @@ class CreateInitSchema < ActiveRecord::Migration
     end
     add_index :users, [:provider, :uid]
 
+
+    create_table :branches, id: :uuid do |t|
+      t.string :subject
+      t.string :lower_subjects, :array => true, :default => '{}'
+      t.uuid :cache_id
+      t.uuid :user_id
+      t.uuid :account_id
+
+      t.timestamps null: false
+    end
+    add_index :branches, :lower_subjects, using: 'gin'
+    add_index :branches, [:user_id, :account_id]
+    add_index :branches, [:cache_id, :account_id]
+    
     
     create_table :messages, id: :uuid do |t|
       t.uuid :branch_id
-      t.uuid :tenant_id
+      t.uuid :user_id
+      t.uuid :account_id
       
       t.string :email
       t.string :subject
@@ -41,12 +56,12 @@ class CreateInitSchema < ActiveRecord::Migration
       t.text :raw_headers
       t.hstore :headers
       
-      t.json :files_array
+      t.json :files_json
 
       t.timestamps null: false
     end
-    add_index :messages, [:tenant_id, :branch_id]
-    add_index :messages, [:tenant_id, :email]
+    add_index :messages, [:account_id, :branch_id]
+    add_index :messages, [:account_id, :email]
     
   end
 end
