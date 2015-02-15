@@ -10,6 +10,10 @@ RSpec.describe Branch, type: :model do
     it { should have_many :messages}
   end
   
+  describe "respond_to" do
+    #it { should respond_to(:some_instance_method).with(2).arguments }
+  end
+  
   describe "methods" do
     it "creates a Branch when given an email subject" do
       Branch.get_from_subject("Test Subject")

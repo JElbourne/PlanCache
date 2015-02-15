@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-
+  has_many :branches
+  has_many :messages
+  
   def self.from_omniauth(auth)
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
       user.provider = auth['provider']
@@ -19,17 +21,6 @@ class User < ActiveRecord::Base
         user.oauth_expires_at = Time.at(auth['credentials']['expires_at']) if auth['credentials']['expires_at']
       end
       user.save!
-    end
-  end
-  
-  def self.create_with_omniauth(auth)
-    
-    create! do |user|
-      user.provider = auth['provider']
-      user.uid = auth['uid']
-      if auth['info']
-         user.name = auth['info']['name'] || ""
-      end
     end
   end
 
