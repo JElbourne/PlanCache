@@ -9,21 +9,23 @@ class EmailProcessor
     @email.to.each do |address|
       Rails.logger.info address
       token = address[:host] == "plancache.com"|| address[:host] == "in.plancache.com" ? address[:token] : nil
+      break if token
+    end
+    # serializedEmail = Marshal.dump(@email)
+    # Rails.logger.info "\n\n\n#{serializedEmail}\n\n\n"
+    #
+    # deserializedEmail = Marshal.load(serializedEmail)
+    # Rails.logger.info "\n\n\n#{deserializedEmail}\n\n\n"
+    
+    ## Send email to the correct worker, background task
+    if token == "TODO_Feature"
+    elsif token.nil?
+      return #This seems to be an invalid email since it does not have a valid to:email
+    else
+      #Catch_all is the document uploading
+      CommitWorker.perform_async(@Email, token)
     end
     
-    Rails.logger.info "\n\n\n#{token}\n\n\n"
-
-    account = Account.find_by_key(token)
-    return unless account
-    
-    user = account.user
-
-    Rails.logger.info "\n\n\n#{user.email} - #{@email.from[:email]}\n\n\n"
-    return unless user.email == @email.from[:email]
-    # TODO determine if from_email is allowed to use this account based on a query on Account Associates (need to create this)
-    
-    branch = account.branches.get_from_subject(@email.subject)
-    message = branch.messages.create_from_email(@email, branch.id)
   end
   
 end

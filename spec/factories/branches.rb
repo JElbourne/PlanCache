@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :branch do
-    subject "Test Subject"
-    lower_subjects ["test subject"]
+    subject "This is an example webhook message"
+    lower_subjects ["this is an example webhook message"]
     cache_id ""
     user_id ""
     account_id ""

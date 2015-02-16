@@ -26,9 +26,9 @@ RSpec.describe Branch, type: :model do
     end
   
     it "does not create a new Branch if one already exists with the subject" do
-      create(:branch, subject: "Test Subject")
+      create(:branch)
       expect(Branch.count).to eq(1)
-      Branch.get_from_subject("Test Subject")
+      Branch.get_from_subject("This is an example webhook message")
       expect(Branch.count).to eq(1)
     end
   end
