@@ -3,11 +3,19 @@ class Message < ActiveRecord::Base
   belongs_to :branch
   belongs_to :user
   
-  def self.create_from_email(email, branch_id)
+  validates :branch_id, presence: true
+  validates :user_id, presence: true
+  validates :account_id, presence: true
+  validates :email, presence: true
+  validates :subject, presence: true
+  
+  def self.create_from_email(email, branch_id, user_id, account_id)
     ## TODO the files_json should all be done in a worker....(create_files_json & upload_file_to_s3) pass it the attachemnts data
     files_json = email.attachments.any? ? create_files_json(email.attachments) : nil
     create do |m|
       m.branch_id = branch_id
+      m.user_id = user_id
+      m.account_id = account_id
       m.email = email.from[:email]
       m.subject = email.subject if email.subject
       m.to = email.to if email.to
