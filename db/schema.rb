@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 20150213043031) do
   add_index "accounts", ["key"], name: "index_accounts_on_key", using: :btree
 
   create_table "branches", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "subject"
+    t.string   "subject",                     null: false
     t.string   "lower_subjects", default: [],              array: true
     t.uuid     "cache_id"
-    t.uuid     "user_id"
-    t.uuid     "account_id"
+    t.uuid     "user_id",                     null: false
+    t.uuid     "account_id",                  null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -42,12 +42,25 @@ ActiveRecord::Schema.define(version: 20150213043031) do
   add_index "branches", ["lower_subjects"], name: "index_branches_on_lower_subjects", using: :gin
   add_index "branches", ["user_id", "account_id"], name: "index_branches_on_user_id_and_account_id", using: :btree
 
+  create_table "caches", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "branch_id",    null: false
+    t.uuid     "message_id",   null: false
+    t.uuid     "parent_cache"
+    t.json     "files_json",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "caches", ["branch_id"], name: "index_caches_on_branch_id", using: :btree
+  add_index "caches", ["message_id"], name: "index_caches_on_message_id", using: :btree
+  add_index "caches", ["parent_cache"], name: "index_caches_on_parent_cache", using: :btree
+
   create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "branch_id"
-    t.uuid     "user_id"
-    t.uuid     "account_id"
-    t.string   "email"
-    t.string   "subject"
+    t.uuid     "branch_id",   null: false
+    t.uuid     "user_id",     null: false
+    t.uuid     "account_id",  null: false
+    t.string   "email",       null: false
+    t.string   "subject",     null: false
     t.hstore   "to",                       array: true
     t.hstore   "from"
     t.hstore   "cc",                       array: true
@@ -62,8 +75,7 @@ ActiveRecord::Schema.define(version: 20150213043031) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "messages", ["account_id", "branch_id"], name: "index_messages_on_account_id_and_branch_id", using: :btree
-  add_index "messages", ["account_id", "email"], name: "index_messages_on_account_id_and_email", using: :btree
+  add_index "messages", ["branch_id", "email"], name: "index_messages_on_branch_id_and_email", using: :btree
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "provider"

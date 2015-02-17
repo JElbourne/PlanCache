@@ -34,11 +34,11 @@ class CreateInitSchema < ActiveRecord::Migration
     add_index :accounts, :key
 
     create_table :branches, id: :uuid do |t|
-      t.string :subject
+      t.string :subject, :null => false
       t.string :lower_subjects, :array => true, :default => '{}'
       t.uuid :cache_id
-      t.uuid :user_id
-      t.uuid :account_id
+      t.uuid :user_id, :null => false
+      t.uuid :account_id, :null => false
 
       t.timestamps null: false
     end
@@ -48,12 +48,12 @@ class CreateInitSchema < ActiveRecord::Migration
     
     
     create_table :messages, id: :uuid do |t|
-      t.uuid :branch_id
-      t.uuid :user_id
-      t.uuid :account_id
+      t.uuid :branch_id, :null => false
+      t.uuid :user_id, :null => false
+      t.uuid :account_id, :null => false
       
-      t.string :email
-      t.string :subject
+      t.string :email, :null => false
+      t.string :subject, :null => false
       t.hstore :to, :array => true
       t.hstore :from
       t.hstore :cc, :array => true
@@ -69,8 +69,20 @@ class CreateInitSchema < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :messages, [:account_id, :branch_id]
-    add_index :messages, [:account_id, :email]
+    add_index :messages, [:branch_id, :email]
+    
+    
+    create_table :caches, id: :uuid do |t|
+      t.uuid :branch_id, :null => false
+      t.uuid :message_id, :null => false
+      t.uuid :parent_cache
+      t.json :files_json, :null => false
+
+      t.timestamps null: false
+    end
+    add_index :caches, :branch_id
+    add_index :caches, :message_id
+    add_index :caches, :parent_cache
     
   end
 end
