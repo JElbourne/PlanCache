@@ -11,19 +11,15 @@ class EmailProcessor
       token = address[:host] == "plancache.com"|| address[:host] == "in.plancache.com" ? address[:token] : nil
       break if token
     end
-    # serializedEmail = Marshal.dump(@email)
-    # Rails.logger.info "\n\n\n#{serializedEmail}\n\n\n"
-    #
-    # deserializedEmail = Marshal.load(serializedEmail)
-    # Rails.logger.info "\n\n\n#{deserializedEmail}\n\n\n"
     
     ## Send email to the correct worker, background task
     if token == "TODO_Feature"
+      ## TODO
     elsif token.nil?
       return #This seems to be an invalid email since it does not have a valid to:email
     else
       #Catch_all is the document uploading
-      CommitWorker.perform_async(@Email, token)
+      CommitService.new(@email, token).commit_inbound_email_to_cache
     end
     
   end
