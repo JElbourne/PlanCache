@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.2.0'
 
@@ -28,6 +28,8 @@ gem 'griddler-mandrill', '~> 1.0.2'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'foundation-rails', '~> 5.5.1.0'
 
+gem 'therubyracer', :platform => :ruby
+
 group :production do
   gem 'rails_12factor'
 end
@@ -55,3 +57,6 @@ group :test do
   gem 'letter_opener', '~> 1.3.0'
   gem 'email_spec', '~> 1.6.0'
 end
+
+gem 'rubber'
+gem 'open4'

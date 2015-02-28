@@ -19,7 +19,7 @@ class EmailProcessor
       return #This seems to be an invalid email since it does not have a valid to:email
     else
       #Catch_all is the document uploading
-      CommitService.new(@email, token).commit_inbound_email_to_cache
+      CommitService.new(@email, token).commit_inbound_email_to_message
     end
     
   end
