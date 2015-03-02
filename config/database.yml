@@ -83,6 +83,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: PlanCache_production
-  username: PlanCache
+  database: plancache_production
+  username: plancache
   password: <%= ENV['PLANCACHE_DATABASE_PASSWORD'] %>

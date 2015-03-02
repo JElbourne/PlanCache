@@ -28,8 +28,6 @@ gem 'griddler-mandrill', '~> 1.0.2'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'foundation-rails', '~> 5.5.1.0'
 
-gem 'therubyracer', :platform => :ruby
-
 group :production do
   gem 'rails_12factor'
 end
@@ -58,5 +56,8 @@ group :test do
   gem 'email_spec', '~> 1.6.0'
 end
 
+gem 'therubyracer', :platform => :ruby
+gem 'passenger', '~> 4.0.59'
+gem 'capistrano'
 gem 'rubber'
 gem 'open4'

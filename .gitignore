@@ -40,6 +40,7 @@ config/initializers/secret_token.rb
 #config/secrets.yml
 >>>>>>> a02428e5da39c930ab575076fb5049c82412c02b
 config/application.yml
+config/rubber/rubber.yml
 
 ## Environment normalisation:
 /.bundle
@@ -60,3 +61,8 @@ bower.json
 =======
 >>>>>>> a02428e5da39c930ab575076fb5049c82412c02b
 .zeus.sock
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
