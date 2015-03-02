@@ -57,7 +57,3 @@ group :test do
 end
 
 gem 'therubyracer', :platform => :ruby
-gem 'passenger', '~> 4.0.59'
-gem 'capistrano'
-gem 'rubber'
-gem 'open4'
