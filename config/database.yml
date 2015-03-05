@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: plancache_production
+  url: db01-plancache.clsndsjrwx2q.us-east-1.rds.amazonaws.com
+  database: plancache
   username: plancache
-  password: <%= ENV['PLANCACHE_DATABASE_PASSWORD'] %>
+  password: plancache1234
