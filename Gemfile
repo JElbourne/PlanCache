@@ -19,7 +19,8 @@ gem 'sidekiq', '~> 3.3.2'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+gem 'capistrano'
 
 gem 'rack-mini-profiler'
 

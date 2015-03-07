@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  url: db01-plancache.clsndsjrwx2q.us-east-1.rds.amazonaws.com
-  database: plancache
+  # url: localhost
+  database: plancache_production
   username: plancache
-  password: plancache1234
+  password: plancache
