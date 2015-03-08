@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/plancache/current"
+root = "/home/deployer/apps/plancache/shared"
 working_directory root
 
 pid "#{root}/tmp/pids/unicorn.pid"
