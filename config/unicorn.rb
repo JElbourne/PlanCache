@@ -1,53 +1,59 @@
+# Set environment to development unless something else is specified
+env = ENV["RAILS_ENV"] || "development"
 
-# Set the current app's path for later reference. Rails.root isn't available at
-# this point, so we have to point up a directory.
-app_path = File.expand_path(File.dirname(__FILE__) + '/..')
 
-# The number of worker processes you have here should equal the number of CPU
-# cores your server has.
-worker_processes (ENV['RAILS_ENV'] == 'production' ? 4 : 1)
-
-# You can listen on a port or a socket. Listening on a socket is good in a
-# production environment, but listening on a port can be useful for local
-# debugging purposes.
-listen app_path + '/tmp/unicorn.sock', backlog: 64
-
-# For development, you may want to listen on port 3000 so that you can make sure
-# your unicorn.rb file is soundly configured.
-listen(3000, backlog: 64) if ENV['RAILS_ENV'] == 'development'
-
-# After the timeout is exhausted, the unicorn worker will be killed and a new
-# one brought up in its place. Adjust this to your application's needs. The
-# default timeout is 60. Anything under 3 seconds won't work properly.
-timeout 300
-
-# Set the working directory of this unicorn instance.
-working_directory app_path
-
-# Set the location of the unicorn pid file. This should match what we put in the
-# unicorn init script later.
-pid app_path + '/tmp/unicorn.pid'
-
-# You should define your stderr and stdout here. If you don't, stderr defaults
-# to /dev/null and you'll lose any error logging when in daemon mode.
-stderr_path app_path + '/log/unicorn.log'
-stdout_path app_path + '/log/unicorn.log'
-
-# Load the app up before forking.
-preload_app true
-
-# Garbage collection settings.
-GC.respond_to?(:copy_on_write_friendly=) &&
-  GC.copy_on_write_friendly = true
-
-# If using ActiveRecord, disconnect (from the database) before forking.
-before_fork do |server, worker|
-  defined?(ActiveRecord::Base) &&
-    ActiveRecord::Base.connection.disconnect!
+# Production specific settings
+if env == "production"
+  app_dir = "plancache"
+  worker_processes 4
 end
 
-# After forking, restore your ActiveRecord connection.
+# listen on both a Unix domain socket and a TCP port,
+# we use a shorter backlog for quicker failover when busy
+listen "/tmp/unicorn.#{app_dir}.socket", :backlog => 64
+
+# Preload our app for more speed
+preload_app true
+
+# nuke workers after 30 seconds instead of 60 seconds (the default)
+timeout 30
+
+# Help ensure your application will always spawn in the symlinked
+# "current" directory that Capistrano sets up.
+working_directory "/home/jbourne/apps/#{app_dir}/current"
+
+# feel free to point this anywhere accessible on the filesystem
+user 'jbourne', 'jbourne'
+shared_path = "/home/jbourne/apps/#{app_dir}/shared"
+
+stderr_path "#{shared_path}/log/unicorn.stderr.log"
+stdout_path "#{shared_path}/log/unicorn.stdout.log"
+
+pid "#{shared_path}/tmp/pids/unicorn.pid"
+
+
+before_fork do |server, worker|
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
+  old_pid = "#{shared_path}/pids/unicorn.pid.oldbin"
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
+    end
+  end
+end
+
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) &&
+  # the following is *required* for Rails + "preload_app true",
+  if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
+  end
 end

@@ -26,4 +26,4 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
-Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
+Dir.glob('lib/capistrano/**/*.cap').each { |r| import r }
