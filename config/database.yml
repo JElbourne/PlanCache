@@ -82,7 +82,7 @@ test:
 #
 production:
   <<: *default
-  hosts: localhost
+  host: localhost
   database: plancache_production
-  username: plancache
+  username: postgres
   password: plancache
