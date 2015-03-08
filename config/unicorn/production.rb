@@ -1,7 +1,7 @@
-root = "/home/deployer/apps/plancache/shared"
+root = "/home/deployer/apps/plancache/current"
 working_directory root
 
-pid "#{root}/tmp/pids/unicorn.pid"
+pid "/home/deployer/apps/plancache/shared/tmp/pids/unicorn.pid"
 
 stderr_path "#{root}/log/unicorn.log"
 stdout_path "#{root}/log/unicorn.log"
