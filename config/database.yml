@@ -84,5 +84,5 @@ production:
   <<: *default
   host: localhost
   database: plancache_production
-  username: postgres
+  username: deployer
   password: plancache

@@ -18,17 +18,6 @@ gem 'figaro', '~> 1.1.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'capistrano', '~> 3.1.0'
-
-# rails specific capistrano funcitons
-gem 'capistrano-rails', '~> 1.1.0'
-
-# integrate bundler with capistrano
-gem 'capistrano-bundler'
-
-# if you are using RBENV
-gem 'capistrano-rbenv', "~> 2.0" 
-
 # Use the Unicorn app server
 gem 'unicorn'
 
@@ -48,6 +37,10 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
 end
 
 group :development, :test do

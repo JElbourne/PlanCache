@@ -1,17 +1,21 @@
+set :port, 22
+set :user, 'deployer'
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-set :stage, :production
+server '104.131.90.33',
+  roles: [:web, :app, :db],
+  port: fetch(:port),
+  user: fetch(:user),
+  primary: true
 
-set :deploy_to, '~/apps/app-name'
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 
-set :branch, 'master'
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: %w(publickey),
+  user: 'deployer',
+}
 
-set :rails_env, 'production'
-
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary
-# server in each group is considered to be the first
-# unless any hosts have the primary property set.
-role :app, %w{jbourne@45.56.102.221}
-role :web, %w{jbourne@45.56.102.221}
-role :db,  %w{jbourne@45.56.102.221}
+set :rails_env, :production
+set :conditionally_migrate, true 
