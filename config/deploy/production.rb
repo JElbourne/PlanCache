@@ -1,7 +1,7 @@
 set :port, 22
 set :user, 'deployer'
 set :deploy_via, :remote_cache
-set :use_sudo, false
+#set :use_sudo, false
 
 server '104.131.90.33',
   roles: [:web, :app, :db],
