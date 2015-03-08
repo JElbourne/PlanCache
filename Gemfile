@@ -29,7 +29,7 @@ gem 'omniauth-facebook', '~> 2.0.0'
 gem 'foundation-rails', '~> 5.5.1.0'
 
 group :production do
-  gem 'rails_12factor'
+  #gem 'rails_12factor'
 end
 
 group :development do
