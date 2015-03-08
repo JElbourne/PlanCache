@@ -28,9 +28,9 @@ gem 'griddler-mandrill', '~> 1.0.2'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'foundation-rails', '~> 5.5.1.0'
 
-group :production do
+#group :production do
   #gem 'rails_12factor'
-end
+#end
 
 group :development do
   gem 'better_errors'
