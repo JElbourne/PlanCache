@@ -1,3 +1,5 @@
 class WelcomeController < ApplicationController
-  @dbhost = ENV['DB_HOST']  
+  def index
+    @dbhost = ENV['DB_HOST']  
+  end
 end
