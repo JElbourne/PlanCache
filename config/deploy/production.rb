@@ -2,12 +2,13 @@ set :port, 22
 set :user, 'deployer'
 set :deploy_via, :remote_cache
 #set :use_sudo, false
+set :branch, 'master'
 
 server '104.131.90.33',
   roles: [:web, :app, :db],
   port: fetch(:port),
   user: fetch(:user),
-  primary: true
+  :primary => true
 
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 
