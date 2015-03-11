@@ -14,11 +14,6 @@ after 'deploy:publishing', 'deploy:restart'
 
 namespace :deploy do
   task :restart do
-    root = "/home/deployer/apps/plancache/current"
-    old_pid = get_pid("#{root}/tmp/pids/unicorn.pid")
-    run "kill -s SIGUSR2 $(cat #{root}/tmp/pids/unicorn.pid)"
-    run "kill -s SIGWINCH #{old_pid}"
-    
     invoke 'unicorn:reload'
   end
 end

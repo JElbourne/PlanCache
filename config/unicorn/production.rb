@@ -8,7 +8,7 @@ stdout_path "#{root}/log/unicorn.log"
 
 worker_processes 4
 timeout 30
-preload_app true
+preload_app false
 
 #listen "#{root}/tmp/sockets/unicorn.sock"
 listen '/tmp/unicorn.plancache.sock'#, backlog: 64
