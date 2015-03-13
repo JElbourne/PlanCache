@@ -32,12 +32,24 @@ before_fork do |server, worker|
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.connection.disconnect!
  
-  old_pid = "#{server.config[:pid]}.oldbin"
-  if old_pid != server.pid
+  # old_pid = "#{server.config[:pid]}.oldbin"
+  # if old_pid != server.pid
+  #   begin
+  #     sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+  #     Process.kill(sig, File.read(old_pid).to_i)
+  #   rescue Errno::ENOENT, Errno::ESRCH
+  #   end
+  # end
+  # graceful shutdown.
+  old_pid_file = "#{root}/tmp/pids/unicorn.pid.oldbin"
+  if File.exists?(old_pid_file) && server.pid != old_pid_file
     begin
-      sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-      Process.kill(sig, File.read(old_pid).to_i)
+      old_pid = File.read(old_pid_file).to_i
+      server.logger.info("sending QUIT to #{old_pid}")
+      # we're killing old unicorn master right there
+      Process.kill("QUIT", old_pid)
     rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
     end
   end
 end
